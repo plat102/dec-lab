@@ -1,6 +1,11 @@
 import re
 from typing import Any
 
+import unidecode
+
+from config.job_map import JOB_MAP
+from config.stopwords import STOPWORDS
+
 def extract_salary_info(value: str) -> dict[str, Any]:
     if value is None:
         return {}
@@ -72,3 +77,49 @@ def extract_salary_info(value: str) -> dict[str, Any]:
 
     return {'num': None, "min": None, "max": None, "unit": None}
 
+def parse_address(value):
+    if not value:
+        return []
+
+    address = []
+    elems = value.split(': ')
+
+    for special_loc in ['Nước Ngoài', 'Toàn Quốc' ]:
+        if special_loc in elems:
+            address.append({'city': special_loc})
+            elems.remove(special_loc)
+
+    for i in range(0, len(elems), 2):
+        # If district may exist
+        if (len(elems) - i) > 1:
+            address.append({'city': elems[i],
+                            'district': elems[i + 1]})
+        else:
+            address.append({'city': elems[i]})
+
+    return address
+
+def clean_title_vi(title):
+    if not isinstance(title, str):
+        return ''
+    t = title.lower()
+
+    # remove vi
+    t = unidecode.unidecode(t)
+    # remove stopwords
+    for w in STOPWORDS:
+        t = t.replace(w, ' ')
+
+    t = re.sub(r'\s+', ' ', t).strip()
+    return t
+
+def classify_job_group(title):
+    t = clean_title_vi(title)
+    # print(title, ' - ', t)
+
+    for group, keywords in JOB_MAP.items():
+        for kw in keywords:
+            if kw in t:
+                return group
+
+    return 'other'

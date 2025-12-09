@@ -10,7 +10,8 @@ requires-python = ">=3.12"
 dependencies = [
     "notebook (>=7.5.0,<8.0.0)",
     "pandas (>=2.3.3,<3.0.0)",
-    "mypy (>=1.11)"
+    "mypy (>=1.11)",
+    "unidecode (>=1.4.0,<2.0.0)"
 ]
 
 
