@@ -5,6 +5,7 @@ from src.extract.fetch_csv import fetch_csv_from_url
 from src.transfom.salary import transform_salary
 from src.transfom.address import transform_address
 from src.transfom.job_title import transform_job_title
+from src.load.load_job import load_jobs_to_postgres
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -26,6 +27,8 @@ def run_etl():
     # ---------- LOAD ----------
     # print(df.head())
     logger.info(' - Saving transformed data...')
+
+    load_jobs_to_postgres(df)
 
     print("\n" + "=" * 50)
     print("ETL Pipeline Complete!")

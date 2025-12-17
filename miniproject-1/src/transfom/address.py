@@ -9,4 +9,6 @@ def transform_address(df: pd.DataFrame) -> pd.DataFrame:
     df['city'] = df['address_info'].apply(lambda x: x[0].get('city'))
     df['district'] = df['address_info'].apply(lambda x: x[0].get('district'))
 
+    df.drop(columns=['address_info'], inplace=True)
+
     return df

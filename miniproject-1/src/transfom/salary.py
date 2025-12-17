@@ -13,4 +13,6 @@ def transform_salary(df: pd.DataFrame) -> pd.DataFrame:
         lambda x: x.get('max') * (10 ** 6) if x.get('max') and x.get('unit') == 'VND' else x.get('max'))
     df['salary_unit'] = df['salary_info'].apply(lambda x: x.get('unit'))
 
+    df.drop(columns=['salary_info'], inplace=True)
+
     return df
