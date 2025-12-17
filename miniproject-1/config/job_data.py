@@ -1,0 +1,1 @@
+DATA_URL = 'https://file.notion.so/f/f/27250981-a51e-4c6e-96ba-f627e96b612e/12ece2ee-e456-4085-b7d3-d4cab5c6102d/data.csv?table=block&id=2921ee83-6605-8053-b465-d3f1d761a537&spaceId=27250981-a51e-4c6e-96ba-f627e96b612e&expirationTimestamp=1765987200000&signature=6w5ldKjo3UA399Shp7kC10QYzBcD05ioC4Wze8LZ_i8&downloadName=data.csv'
