@@ -9,7 +9,7 @@ from src.transfom.address import transform_address
 from src.transfom.job_title import transform_job_title
 from src.load.load_job import load_jobs_to_postgres
 
-logging.basicConfig(level=logging.INFO)
+# logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 def run_etl():
