@@ -3,6 +3,10 @@ import pandas as pd
 from src.utils.helpers import parse_address
 
 def transform_address(df: pd.DataFrame) -> pd.DataFrame:
+
+    if 'address' not in df.columns:
+        raise ValueError('No address column in dataframe')
+
     df['address_info'] = df['address'].apply(lambda x: parse_address(x))
 
     # Get first address city & district info into

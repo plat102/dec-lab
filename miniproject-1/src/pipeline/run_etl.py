@@ -1,5 +1,7 @@
 import logging
 
+import pandas as pd
+
 from config.job_data import DATA_URL
 from src.extract.fetch_csv import fetch_csv_from_url
 from src.transfom.salary import transform_salary
@@ -23,6 +25,8 @@ def run_etl():
     df = transform_address(df)
     logger.info(' - Transforming job title...')
     df = transform_job_title(df)
+
+    df['processed_time'] = pd.Timestamp.now()
 
     # ---------- LOAD ----------
     # print(df.head())
