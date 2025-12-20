@@ -9,3 +9,6 @@ Processed jobs are loaded into PostgreSQL db:
 
 Scheduled job runs the ETL pipeline every 1 min via [run_pipeline.sh](scripts/run_pipeline.sh):
 ![img.png](images/cron_job.png)
+
+Unit testing for transform functions with `pytest`
+![img.png](images/unit_test.png)

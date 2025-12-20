@@ -1,6 +1,6 @@
 import logging
 import re
-from typing import Any
+from typing import Any, Optional
 
 import unidecode
 
@@ -11,79 +11,82 @@ import pandas as pd
 
 logger = logging.getLogger(__name__)
 
-def extract_salary_info(value: str) -> dict[str, Any]:
-    if value is None:
-        return {}
+NUM_EXPR = r'(\d+(?:\.\d+)?)'
+SPACES_EXPR = r'\s*'
+UNIT_EXPR = r'(triệu|tr|vnd|vnđ|usd|\$|usd\/month)'
+
+def extract_salary_info(value: Optional[str]) -> dict[str, Any]:
+    """
+    Normalize salary string into structured numeric data.
+    Returns:
+        {
+            "num": Optional[float],
+            "min": Optional[float],
+            "max": Optional[float],
+            "unit": Optional["VND" | "USD"]
+        }
+    """
+    result: dict[str, Optional[Any]] = {
+        "num": None,
+        "min": None,
+        "max": None,
+        "unit": None,
+    }
+
+    if not value:
+        return result
 
     try:
-        # ----- Clean -----
-        text_clean = value.replace(',', '').strip().lower()
+        text = value.replace(",", "").lower().strip()
 
-        # ----- Detect currency -----
-        unit = 'USD' if ('usd' in text_clean or '$' in text_clean) \
-                    else 'VND'
+        # ---------- detect unit ----------
+        unit = "USD" if ("usd" in text or "$" in text) else "VND"
+        result["unit"] = unit
 
-        # ----- Match specific cases -----
-        num_expr = r'(\d+(?:\.\d+)?)'
-        char_expr = r'(\d+)'
-        spaces_expr = r'\s*'
-        unit_expr = r'(?:\s*(triệu|vnđ|vnd|usd|$|usd\/month))?'
+        # ---------- thỏa thuận ----------
+        if "thoả thuận" in text or "thỏa thuận" in text:
+            return result
 
-        # "thoa thuan"
-        if 'thỏa thuận' in text_clean or "thoả thuận" in text_clean:
-            return {
-                'num': None
-            }
+        # ---------- range: X - Y ----------
+        range_expr = rf'{NUM_EXPR}{SPACES_EXPR}[-~]{SPACES_EXPR}{NUM_EXPR}'
+        m = re.search(range_expr, text)
+        if m:
+            lo, hi = float(m.group(1)), float(m.group(2))
+            result.update(
+                num=(lo + hi) / 2,
+                min=lo,
+                max=hi,
+            )
+            return result
 
-        # above: "tren X trieu"
-        above_expr = rf'(?:trên|tren|từ|tu|toi thieu|tối thiểu){spaces_expr}{num_expr}'
-        above_match = re.findall(above_expr, text_clean)
-        if len(above_match) > 0:
-            return {
-                'num': float(above_match[0]),
-                'min': float(above_match[0]),
-                'max': None,
-                'unit': unit,
-            }
+        # ---------- above: trên X ----------
+        above_expr = rf'(trên|tren|từ|tu|tối thiểu|toi thieu){SPACES_EXPR}{NUM_EXPR}'
+        m = re.search(above_expr, text)
+        if m:
+            val = float(m.group(2))
+            result.update(num=val, min=val)
+            return result
 
-        # range: "X-Y trieu"
-        range_expr = rf'.*?{num_expr}{spaces_expr}[-~]{spaces_expr}{num_expr}{unit_expr}'
-        range_match = re.findall(range_expr, text_clean)
-        # print(range_match)
-        if range_match:
-            lo, hi, _ = range_match[0]
-            return {
-                'num': (float(lo) + float(hi))/ 2,
-                'min': float(lo),
-                'max': float(hi),
-                'unit': unit,
-            }
+        # ---------- to: tới X ----------
+        to_expr = rf'(tới|toi){SPACES_EXPR}{NUM_EXPR}'
+        m = re.search(to_expr, text)
+        if m:
+            val = float(m.group(2))
+            result.update(num=val, max=val)
+            return result
 
-        # to:"toi X trieu"
-        to_expr = rf'(?:tới){spaces_expr}{num_expr}'
-        to_match = re.findall(to_expr, text_clean)
-        if len(to_match) > 0:
-            return {
-                'num': float(to_match[0]),
-                'min': None,
-                'max': float(to_match[0]),
-                'unit': unit,
-            }
+        # ---------- single number ----------
+        single_expr = rf'{NUM_EXPR}'
+        m = re.search(single_expr, text)
+        if m:
+            val = float(m.group(1))
+            result.update(num=val, min=val, max=val)
+            return result
 
-        # one num: "X trieu"
-        one_num = re.findall(rf'{num_expr}{unit_expr}', text_clean)
-        if len(one_num) > 0:
-            num, unit = one_num[0]
-            return {
-                'num': float(num),
-                'min': float(num),
-                'max': float(num),
-                'unit': unit,
-            }
     except Exception as e:
-        logger.warning(f'Failed to parse salary info: {value}')
+        logger.warning(f"Failed to parse salary '{value}': {e}")
 
-    return {'num': None, "min": None, "max": None, "unit": None}
+    return result
 
 def parse_address(value):
     if value is None or pd.isna(value):
