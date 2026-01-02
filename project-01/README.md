@@ -13,7 +13,7 @@ Dữ liệu trên đang được đặt trên Linux server, cần team Data Engi
 ### 3. Tìm ra phim nào có doanh thu cao nhất và doanh thu thấp nhất
 ![img.png](docs/images/03.png)
 ### 4. Tính tổng doanh thu tất cả các bộ phim
-
+![img.png](docs/images/04.png)
 ### 5. Top 10 bộ phim đem về lợi nhuận cao nhất
 
 ### 6. Đạo diễn nào có nhiều bộ phim nhất và diễn viên nào đóng nhiều phim nhất
