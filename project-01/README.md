@@ -9,7 +9,7 @@ Dữ liệu trên đang được đặt trên Linux server, cần team Data Engi
 ![img.png](docs/images/01.png)
 
 ### 2. Lọc ra các bộ phim có đánh giá trung bình trên 7.5 rồi lưu ra một file mới
-
+![img.png](docs/images/02.png)
 ### 3. Tìm ra phim nào có doanh thu cao nhất và doanh thu thấp nhất
 
 ### 4. Tính tổng doanh thu tất cả các bộ phim
