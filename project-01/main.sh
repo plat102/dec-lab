@@ -9,8 +9,8 @@ echo "Raw file: $RAW_FILE"
 # View file size (line, byte, max line length)
 wc -lcL $RAW_FILE
 # View columns
-head -2 $RAW_FILE
-tail -3 $RAW_FILE
+#head -2 $RAW_FILE
+#tail -3 $RAW_FILE
 # Count columns
 echo
 echo "Number of columns: $(head -1 $RAW_FILE | awk -F , '{print NF}')"
