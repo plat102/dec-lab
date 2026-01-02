@@ -48,18 +48,18 @@ Diễn viên: 72 Robert De Niro (72)
 
 7. Thống kê số lượng phim theo các thể loại. Ví dụ có bao nhiêu phim thuộc thể loại Action, bao nhiêu thuộc thể loại Family, ….
 
-4758 Drama
-3788 Comedy
-2905 Thriller
-2383 Action
-1711 Romance
-1633 Horror
-1470 Adventure
+4761 Drama
+3793 Comedy
+2908 Thriller
+2385 Action
+1712 Romance
+1637 Horror
+1471 Adventure
 1355 Crime
 1231 Family
-1229 Science Fiction
- 915 Fantasy
- 809 Mystery
+1230 Science Fiction
+ 916 Fantasy
+ 810 Mystery
  699 Animation
  520 Documentary
  408 Music
@@ -68,3 +68,4 @@ Diễn viên: 72 Robert De Niro (72)
  188 Foreign
  167 TV Movie
  165 Western
+
