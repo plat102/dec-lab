@@ -6,7 +6,7 @@ Yêu cầu: https://unigap-tech-coaching.notion.site/Linux-CMD-Project-11e04bc02
 Dữ liệu trên đang được đặt trên Linux server, cần team Data Engineer sử dụng command line Linux hỗ trợ các tác vụ sau để có các thông tin cơ bản về dữ liệu
 
 ### 1. Sắp xếp các bộ phim theo ngày phát hành giảm dần rồi lưu ra một file mới
-![img.png](docs/subtask01/img.png)
+![img.png](docs/images/01.png)
 
 ### 2. Lọc ra các bộ phim có đánh giá trung bình trên 7.5 rồi lưu ra một file mới
 
