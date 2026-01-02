@@ -40,5 +40,29 @@ Dữ liệu trên đang được đặt trên Linux server, cần team Data Engi
 ```
 ### 7. Thống kê số lượng phim theo các thể loại. Ví dụ có bao nhiêu phim thuộc thể loại Action, bao nhiêu thuộc thể loại Family, ….
 
+![img.png](docs/images/07.png)
+```bash
+[7/8]: Thống kê số lượng phim theo các thể loại.
+4758 Drama
+3788 Comedy
+2905 Thriller
+2383 Action
+1711 Romance
+1633 Horror
+1470 Adventure
+1355 Crime
+1231 Family
+1229 Science Fiction
+ 915 Fantasy
+ 809 Mystery
+ 699 Animation
+ 520 Documentary
+ 408 Music
+ 334 History
+ 270 War
+ 188 Foreign
+ 167 TV Movie
+ 165 Western
+```
 ### 8. Idea của bạn để có thêm những phân tích cho dữ liệu?
 
