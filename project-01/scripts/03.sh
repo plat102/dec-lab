@@ -3,7 +3,6 @@
 source ./config.sh
 
 TMP_FILE="$OUTPUT_DIR/temp_revenue.csv"
-OUTPUT_FILE="$OUTPUT_DIR/02_revenue_min_max.csv"
 
 echo "[3/8]: Tìm ra phim nào có doanh thu cao nhất và doanh thu thấp nhất"
 
