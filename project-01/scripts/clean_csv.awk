@@ -1,22 +1,41 @@
-# Script này xử lý CSV có dấu phẩy nằm trong ngoặc kép (quoted commas).
-# Logic: Tạm thay thế dấu phẩy (,) bên trong ngoặc kép thành <comma>
-# Ref: https://stackoverflow.com/questions/4205431/parse-a-csv-using-awk-and-ignoring-commas-inside-a-field
-
 BEGIN {
-    # Cắt chuỗi dựa trên dấu ngoặc kép "
-    FS = "\""
-    OFS = "\""
+    EXPECTED_COLS = 21  # Dataset num of cols
 }
 
 {
-    # Duyệt qua các cột chẵn (ndung trong ngoặc)
-    for (i = 2; i <= NF; i += 2) {
-        # Thay thế tất cả dấu , thành <comma>
-        gsub(",", "<comma>", $i)
+    sub(/\r$/, "", $0)
 
-        # Thay \n
-        gsub("\n", " ", $i)
-
+    # --- Accumulate buffer (line) for line full content
+    if (buffer != "") {
+        buffer = buffer " " $0
+    } else {
+        buffer = $0
     }
-    print $0
+
+    # --- Check 1: even # of quotes
+    temp = buffer
+    count_quote = gsub("\"", "\"", temp)
+    # If even, quote may closed
+    if (count_quote % 2 == 0) {
+        # --- Transform quoted content
+        n = split(buffer, parts, "\"")
+        final_line = ""
+
+        for (i = 1; i <= n; i++) {
+            if (i % 2 == 0) {
+                # Replace comma & newline
+                gsub(/,/, "<comma>", parts[i])
+                gsub(/\n/, " ", parts[i])
+            }
+            final_line = final_line parts[i]
+            if (i < n) final_line = final_line "\""
+        }
+
+        # --- Check 2: columns >= 21
+        if (split(final_line, trash, ",") >= EXPECTED_COLS) {
+            print final_line
+            buffer = ""
+        }
+    }
+    # Keep buffer
 }
