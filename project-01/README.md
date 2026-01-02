@@ -15,7 +15,19 @@ Dữ liệu trên đang được đặt trên Linux server, cần team Data Engi
 ### 4. Tính tổng doanh thu tất cả các bộ phim
 ![img.png](docs/images/04.png)
 ### 5. Top 10 bộ phim đem về lợi nhuận cao nhất
-
+![img.png](docs/images/05.png)
+```bash
+                                            Avatar | 2544505847
+                      Star Wars: The Force Awakens | 1868178225
+                                           Titanic | 1645034188
+                                    Jurassic World | 1363528810
+                                         Furious 7 | 1316249360
+                                      The Avengers | 1299557910
+      Harry Potter and the Deathly Hallows: Part 2 | 1202817822
+                           Avengers: Age of Ultron | 1125035767
+                                            Frozen | 1124219009
+                                           The Net | 1084279658
+```
 ### 6. Đạo diễn nào có nhiều bộ phim nhất và diễn viên nào đóng nhiều phim nhất
 
 ### 7. Thống kê số lượng phim theo các thể loại. Ví dụ có bao nhiêu phim thuộc thể loại Action, bao nhiêu thuộc thể loại Family, ….
