@@ -29,7 +29,15 @@ Dữ liệu trên đang được đặt trên Linux server, cần team Data Engi
                                            The Net | 1084279658
 ```
 ### 6. Đạo diễn nào có nhiều bộ phim nhất và diễn viên nào đóng nhiều phim nhất
+![img.png](docs/images/06.png)
 
+```bash
+[6/8]: Đạo diễn nào có nhiều bộ phim nhất và diễn viên nào đóng nhiều phim nhất
+--- Đạo diễn: 
+  46 Woody Allen
+--- Diễn viên: 
+  72 Robert De Niro
+```
 ### 7. Thống kê số lượng phim theo các thể loại. Ví dụ có bao nhiêu phim thuộc thể loại Action, bao nhiêu thuộc thể loại Family, ….
 
 ### 8. Idea của bạn để có thêm những phân tích cho dữ liệu?
