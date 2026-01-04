@@ -12,8 +12,12 @@ awk -f ./scripts/clean_csv.awk | \
 awk -F, '{
     gsub("<comma>", ",", $6)
 
-    # Title | Profit (Revenue - Budget)
-    print $6 "|" ($5 - $4)
+    rev = $5 + 0
+    bud = $4 + 0
+
+    if (rev > 0 && bud > 0) {
+         printf "%s|%.0f\n", $6, (rev - bud)
+    }
 }' > "$TMP_FILE"
 
 # B2: In ra top 10

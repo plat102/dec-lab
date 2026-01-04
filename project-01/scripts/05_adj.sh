@@ -13,7 +13,7 @@ awk -F, '{
     gsub("<comma>", ",", $6)
 
     # Title | Profit (Revenue - Budget)
-    print $6 "|" ($NF - $(NF-1))
+    printf "%s|%.0f\n", $6, ($NF - $(NF-1))
 }' > "$TMP_FILE"
 
 # B2: In ra top 10

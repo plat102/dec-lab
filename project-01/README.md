@@ -57,20 +57,20 @@ id,imdb_id,popularity,budget,revenue,original_title,cast,homepage,director,tagli
 ```
 
 Tính theo doanh thu / lợi nhuận "adjusted"
-![img_1.png](docs/images/05_adj.png)
+![img.png](docs/images/05_adj.png)
 ```csv
 [5/8]: Top 10 bộ phim đem về lợi nhuận cao nhất (theo doanh thu & budget adjust)
 -----------------------------------------------------------------
-                                       Toy Story 3 | 863171911
-                               Alice in Wonderland | 825467110
-      Harry Potter and the Deathly Hallows: Part 1 | 704305868
-                                         Inception | 665500000
-                        The Twilight Saga: Eclipse | 630491347
-                               Shrek Forever After | 587600867
-                                     Despicable Me | 474513985
-                                        Iron Man 2 | 423933331
-                                 The King's Speech | 399211549
-                                           Tangled | 331794936
+                                         Star Wars | 2750136651
+                                            Avatar | 2586236848
+                                           Titanic | 2234713671
+                                      The Exorcist | 2128035625
+                                              Jaws | 1878643094
+                        E.T. the Extra-Terrestrial | 1767968064
+                      Star Wars: The Force Awakens | 1718723211
+                                           The Net | 1551568265
+                    One Hundred and One Dalmatians | 1545635295
+                           The Empire Strikes Back | 1376997526
 ```
 
 ### 6. Đạo diễn nào có nhiều bộ phim nhất và diễn viên nào đóng nhiều phim nhất
