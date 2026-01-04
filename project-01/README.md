@@ -56,19 +56,21 @@ id,imdb_id,popularity,budget,revenue,original_title,cast,homepage,director,tagli
                                            The Net | 1084279658
 ```
 
-```
-[5/8]: Top 10 bộ phim đem về lợi nhuận cao nhất
+Tính theo doanh thu / lợi nhuận "adjusted"
+![img_1.png](docs/images/05_adj.png)
+```csv
+[5/8]: Top 10 bộ phim đem về lợi nhuận cao nhất (theo doanh thu & budget adjust)
 -----------------------------------------------------------------
-                                            Avatar | 2544505847
-                      Star Wars: The Force Awakens | 1868178225
-                                           Titanic | 1645034188
-                                    Jurassic World | 1363528810
-                                         Furious 7 | 1316249360
-                                      The Avengers | 1299557910
-      Harry Potter and the Deathly Hallows: Part 2 | 1202817822
-                           Avengers: Age of Ultron | 1125035767
-                                            Frozen | 1124219009
-                                           The Net | 1084279658
+                                       Toy Story 3 | 863171911
+                               Alice in Wonderland | 825467110
+      Harry Potter and the Deathly Hallows: Part 1 | 704305868
+                                         Inception | 665500000
+                        The Twilight Saga: Eclipse | 630491347
+                               Shrek Forever After | 587600867
+                                     Despicable Me | 474513985
+                                        Iron Man 2 | 423933331
+                                 The King's Speech | 399211549
+                                           Tangled | 331794936
 ```
 
 ### 6. Đạo diễn nào có nhiều bộ phim nhất và diễn viên nào đóng nhiều phim nhất
@@ -110,3 +112,6 @@ id,imdb_id,popularity,budget,revenue,original_title,cast,homepage,director,tagli
 ```
 ### 8. Idea của bạn để có thêm những phân tích cho dữ liệu?
 
+- Top phim có tỉ suất lợi nhuận cao nhất (ROI)
+- Tháng nào trong năm tập trung nhiều phim doanh thu, lợi nhuận cao nhất?
+- Phân chia kinh phí thành các nhóm và so sánh xem nhóm được đầu tư nhiều có phải là có nhóm có rating/lợi nhuận cao nhất không?
