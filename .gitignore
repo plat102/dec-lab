@@ -5,7 +5,7 @@ __pycache__/
 
 # Virtual environments (Poetry typically uses .venv)
 .venv/
-
+venv/
 # Distribution / packaging
 dist/
 build/
@@ -29,6 +29,7 @@ Thumbs.db
 .ipynb_checkpoints/
 
 .env
+database.ini
 
 */logs
 
